@@ -1,6 +1,4 @@
-// var lib={
-// "isPrivilage":isPrivilage();
-// };
+
 //FUNCTION TO ADD EVENT EVENT LISTENER
 function addEvent(id,events)
 {
