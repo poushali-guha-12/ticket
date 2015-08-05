@@ -1,16 +1,18 @@
 var userdetail=core();
 function User(){
 	this.getName=function (id){
-		//var name=userdetail.getValue("forum_json",(getUser(id,"name")));
-		return name;
+		var name=userdetail.getValue("forum_json");
+		return name.getUser(id,"name");
 	}
 	this.getRole=function (id){
-		//var role=userdetail.getValue("forum_json",(getUser(id,"role")));
-		return role;
+		var role=userdetail.getValue("forum_json");
+		return role.getUser(id,"role");
 	}
 	this.isPrivilege=function (id){
 		var privilege=[],role;
-		role=getRole(id);
+		debugger;
+		role=this.getRole(id);
+		console.log(role);
 		if( role=="master"||role=="reporter"){
 			privilege.push("add");
 		}
@@ -31,5 +33,4 @@ function User(){
 		return user;
 	}
 }
-var user=new User();
-userdetail.register("user_details",user);
+userdetail.register("user_details",new User());
