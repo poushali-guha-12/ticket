@@ -4,14 +4,14 @@ function exportTicket(element) {
     children = parent.childNodes;
 
     for (i = 0; i < children.length; i++) {
-        var childtype = children[i].type;
+        var childid = children[i].type;
 
-        if (childtype == "text") {
+        if (childid == "id" || childid == "name" || childid == "role" || childid == "header") {
             var content = children[i].value;
             textArray.push(content);
 
         }
-        if (childtype == "a") {
+        if (childid == "a") {
             console.log(a.value);
 
         }
