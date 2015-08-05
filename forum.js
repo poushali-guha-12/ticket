@@ -10,6 +10,7 @@ function createElement(tagName, parentElement, attList, style, label) {
     if (label != null) {
         element.appendChild(document.createTextNode(label));
     }
+    
     return element;
 }
 createElement("div", document.body, {id:"maindiv"}, {boxShadow: "0px 0px 50px #87CEEB",position:"relative", margin:"auto", height:"100%", width:"60%", border: "3px solid black"}, "");
@@ -31,7 +32,7 @@ createElement("div", document.body, {id:"maindiv"}, {boxShadow: "0px 0px 50px #8
 })();
 
 (function ticketView() {
-    createElement('div', maindiv, {id:'div3'}, {position:'absolute', top:"35%", height:'30%', width:'100%', borderBottom:'2px solid black'}, "");
+  var a=createElement('div', maindiv, {id:'div3'}, {position:'absolute', top:"35%", height:'30%', width:'100%', borderBottom:'2px solid black'}, "");
     createElement('div', div3, {id:'divHeader'}, {position:'absolute', top:'6%', height:'30%', width:'100%', borderBottom:'1px solid blue'}, "");
     createElement('input', divHeader, {id:'id1', placeholder:'id'}, {position:'absolute', left:"2%", top:"10%", height:'40%', width:'20%'}, "");
     createElement('input', divHeader, {id:'header', placeholder:'header'}, {position:'absolute', left:"27%", top:"10%", height:'40%', width:'20%'}, "");
@@ -41,12 +42,32 @@ createElement("div", document.body, {id:"maindiv"}, {boxShadow: "0px 0px 50px #8
     createElement('a', divHeader, {id:"reject", value:"false"}, {position:'absolute', right:"5%", bottom:"10%", cursor:'pointer'}, "/ reject");
     createElement('button', divHeader, {id:'arrow'}, {position:"absolute", left:"45%", bottom:"0%", height:'30%',width:'5%', cursor: "pointer"}, "-");
 
-    createElement('span', div3, {id:'divDescription'}, {position:'absolute', bottom:'10%', height:'50%', width:'100%'}, "");
+    createElement('span', div3, {id:'divDescription'}, {position:'absolute', bottom:'10%', height:'50%', width:'100%',display:'none'}, "");
     createElement('textarea', divDescription, {id:'textarea', placeholder:'Description'}, {position:'absolute', height:'70%', width:'80%', margin:'2%'}, "");
+    
     createElement('button', div3, {id:'export1'}, {position:'absolute', right:'5%', bottom:'2%', height:'15%', width:'10%', cursor: "pointer"}, "Export");
-    document.getElementById("arrow").addEventListner("click",function(){
-                  var div=document.getElementById('divDescription');
-                                          
+   
+     
+    document.getElementById('arrow').addEventListener("click",function(){
+        console.log("ok");
+                  if(document.getElementById('divDescription').style.display = 'none')
+                  document.getElementById('divDescription').style.display = '';
+   //a=new set();
+
+    });
+    document.getElementById('confirm').addEventListener("click",function(){
+        console.log("ok1");
+                 //if(document.getElementById('divDescription').style.display = 'none')
+                  document.getElementById('divHeader').style.background = "red";
+   //a=new set();
+
+    });
+    document.getElementById('reject').addEventListener("click",function(){
+        console.log("ok2");
+                  //if(document.getElementById('divDescription').style.display = 'none')
+                  document.getElementById('divHeader').style.background = 'green';
+   //a=new set();
+
     });
 })();
 
@@ -58,3 +79,13 @@ createElement("div", document.body, {id:"maindiv"}, {boxShadow: "0px 0px 50px #8
     createElement("button", div4, {id:"go2"}, {position:"absolute", left:"75%", top:"65%", height:"20%", width:"5%", cursor: "pointer"}, "GO");
     createElement("button", div4, {id:"export2"}, {position:"absolute", right:"2%", bottom:"2%", height:"15%", width:"10%", cursor: "pointer"}, "Export");
 })();
+
+
+function set()
+{
+    debugger;
+    this.style.color="red";
+}
+
+
+console.log("k");
