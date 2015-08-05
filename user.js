@@ -10,9 +10,9 @@ function User(){
 	}
 	this.isPrivilege=function (id){
 		var privilege=[],role;
-		debugger;
+		
 		role=this.getRole(id);
-		console.log(role);
+		
 		if( role=="master"||role=="reporter"){
 			privilege.push("add");
 		}
@@ -25,12 +25,16 @@ function User(){
 		if( role=="admin"){
 			privilege.push("insertUser");
 		}
+		if(role=="Id not Matching!!!"){
+            privilege.push(role);
+        }
 		return privilege;
+		}
 	}
 	this.users=function (id){
 		var user={};
 		//user[id]=userdetail.getValue("forum_json");
 		return user;
 	}
-}
+
 userdetail.register("user_details",new User());
