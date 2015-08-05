@@ -2,6 +2,9 @@
 // "isPrivilage":isPrivilage();
 // };
 //FUNCTION TO ADD EVENT EVENT LISTENER
+function event()
+{
+  var user=userdetail.getValue("user_details");
 function addEvent(id,events)
 {
 	var eventName,element;
@@ -17,31 +20,35 @@ addEvent("go1",{click:function(){
               }
         );
 //ADD USER 
-addEvent("add",{click:function(){
+/*addEvent("add",{click:function(){
                                   setUser(document.getElementById(newName).value,document.getElementById(newId).value,document.getElementById(newRole).value);
                                 }
                 }
-        );
+        );*/
 
 //EXPORT ALL TICKET 
-addEvent("exportAll",{click:function(){
+/*addEvent("exportAll",{click:function(){
                                   exportAllTicket();
                                 }
               }
-        );
+        );*/
 //ADD TICKET 
 addEvent("go2",{click:function(){
                                   ticketId = Math.floor((Math.random() * 999999) + 100000);
-                                  name = getName(document.getElementById('userId').value);
+                                  //var user=userdetail.getValue("user_details");
+                                  debugger;
+                                  var name = user.getName(document.getElementById('userId').value);
+
+                                  console.log(name);
                                   //addTicket will return the specific EXPORT button ID
-                                  exportId = 
-                                  addTicket(ticketId,name,header,description,exportId);
+                                  //exportId = 
+                                  //addTicket(ticketId,name,header,description,exportId);
                                   //EXPORT SINGLE TICKET 
-                                  addEvent("exportId",{click:function(){
+                                  /*addEvent("exportId",{click:function(){
                                                                     exportTicket();
                                                                   }
                                                 }
-                                          );
+                                          );*/
                                 }
                               }
         );
@@ -49,11 +56,16 @@ addEvent("go2",{click:function(){
 function getPriviledgeById()
 {
   var pri=[];
+   
   //isPriviledge will return the priviledges of the passed ID
-  pri=isPriviledge(document.getElementById('userId').value);
+  pri=user.isPrivilege(document.getElementById('userId').value);
+
   for(var i=0;i<pri.length;i++)
   {
     //drawTemplate will create the templates
-    drawTemplate(pri[i]);
+    console.log(pri[i]);
+    //drawTemplate(pri[i]);
   }
 }
+}
+userdetail.register("event",event());
