@@ -2,10 +2,10 @@ function forum_json() {
 
 	var forum = {
 
-		users : [ {"id":"chinmoy@fusioncharts.com","name":"chinmoy","role":"master"} ,
-				{ "id":"kisan@fusioncharts.com","name":"kisan","role":"admin"}
-				] ,
-		tickets : []
+		users : [ { "id" : "chinmoy@fusioncharts.com", "name" : "chinmoy", "role" : "master" } ,
+				  { "id" : "kisan@fusioncharts.com", "name" : "kisan", "role" : "admin" }
+				] , 
+		//tickets : []
 	} ;
 
 
@@ -15,10 +15,10 @@ function forum_json() {
 	   forum.users.push( user ) ;
 	 }
 
-	this.setTicket = function( id, header, desc, status, name ) {
+	this.setTicket = function( ticket ) {
 
-	 	var ticket = { "id" : id, "header" : header, "desc" : desc, "status" : status, "name" : name };
-	 	forum.tickets.push( ticket );
+	 	//forum.tickets.push( ticket );
+	 	console.log(ticket);
 	 }
 
 
@@ -42,24 +42,10 @@ function forum_json() {
 		}
 	}	
 
-	this.getTicket = function( id, requirement ) {
+	/*this.getTicket = function( id ) {
         for( var i = 0; i<forum.tickets.length; i++ ) {
 	        if( forum.tickets[i].id == id ) {
-	          	if( requirement === "header" ){
-	          		return forum.tickets[i].header;
-	          	}
-	          	else if( requirement === "desc" ){
-	          		return forum.tickets[i].desc;
-	          	}
-	          	else if( requirement === "status" ){
-	          		return forum.tickets[i].status;
-	          	}
-	          	else if( requirement === "name" ){
-	          		return forum.tickets[i].name;
-	          	}
-	          	else if( requirement === "details" ){
-	          		return forum.tickets[i];
-	          	}
+	             		return forum.tickets[i];
 	        }
 	        else
 	        {
@@ -67,6 +53,6 @@ function forum_json() {
 	        }
 		}
 		
-	}
+	} */
 }
 
