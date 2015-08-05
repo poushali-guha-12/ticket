@@ -17,7 +17,7 @@ function createElement(tagName, parentElement, attList, style, label) {
     parentElement.appendChild(element);
     return element;
 }
-createElement("div", document.body, {id:"maindiv"}, {boxShadow: "0px 0px 100px #87CEEB",position:"relative", margin:"auto", height:"auto", width:"60%"}, "");
+createElement("div", document.body, {id:"maindiv"}, { boxShadow:"0px 0px 50px #87CEEB" , position:"relative", margin:"auto", height:"auto", width:"60%"}, "");
 
 (function insertId() {
     createElement("div", maindiv, {id:"div1"}, {position:"relative", height:"20%", width:"100%", borderBottom: "2px solid black"}, "");
@@ -35,10 +35,10 @@ createElement("div", document.body, {id:"maindiv"}, {boxShadow: "0px 0px 100px #
     createElement('button', div2, {id:'add'}, {position:"absolute", left:"80%", top:"30%", height:'30%',width:'10%', cursor: "pointer", backgroundColor:"white"}, "ADD");
 })();
 
-createElement('div', maindiv, {id:'div3'}, {position:'relative', height:'30%', width:'100%', display:"block"}, "");
+createElement('div', maindiv, {id:'div3'}, {position:'relative', width:'100%', display:"block"}, "");
 
 function ticketView() {   
-    var tick=createElement('div', div3, {id:'ticketDiv'+i}, {position:'relative', height:'100%', width:'100%', borderBottom:'2px solid black'}, "");
+    var tick=createElement('div', div3, {id:'ticketDiv'+i}, {position:'relative', height:'30%', width:'100%', border:'1px solid red'}, "");
     var head=createElement('div', tick, {id:'divHeader'}, {position:'absolute', top:'6%', height:'50%', width:'100%', borderBottom:'1px solid blue'}, "");
     createElement('input', head, {id:'id1', placeholder:'id'}, {position:'absolute', left:"2%", top:"5%", height:'30%', width:'20%'}, "");
     createElement('input', head, {id:'header', placeholder:'Header'}, {position:'absolute', left:"27%", top:"5%", height:'30%', width:'30%'}, "");
@@ -51,12 +51,12 @@ function ticketView() {
     createElement('textarea', desc, {id:'textarea', placeholder:'Description'}, {position:'absolute', top:"10%", height:'80%', width:'80%', margin:'2%'}, "");
     createElement('button', tick, {id:'export1'}, {position:'absolute', right:'2%', top:'42%', height:'12%', width:'10%', cursor: "pointer", backgroundColor:"white"}, "Export");
     i++;
-} 
-//debugger;
+}
 ticketView();
-
+ticketView();
+ticketView();
 function insertThread() {
-    createElement("div", maindiv, {id:"div4"}, {position:"relative", marginTop:"5px", height:"30%", width:"100%", display:"block"}, "");
+    createElement("div", maindiv, {id:"div4"}, {position:"relative", marginTop:"5px", height:"30%", width:"100%", display:"block", border:'1px solid red'}, "");
     createElement("h4", div4, {id:"thread"}, {position:"absolute", width:"100%", textAlign:"center"}, "Insert A Thread");
     createElement("input", div4, {id:"threadHeader", placeholder:"Header"}, {position:"absolute", left:"2%", top:"30%", height:"15%", width:"30%"}, "");
     createElement("textarea", div4, {id:"description", placeholder:"Description"}, {position:"absolute", left:"2%", top:"50%", height:"35%", width:"70%"}, "");
