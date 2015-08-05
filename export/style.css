@@ -1,0 +1,10 @@
+.container{
+	width:90%;
+	height:90%;
+	border:1px solid black;
+}
+.ticket{
+	width:80%;
+	height:10%;
+	border:1px solid black;
+}

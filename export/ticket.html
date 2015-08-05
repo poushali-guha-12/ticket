@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>	 
+<body>
+<script type="text/javascript" src="export.js"></script> 
+
+	<div class="container" >
+
+	<div class="ticket" id="div1">
+	<input type="label" value="ID:111">
+	<input type="label" value="header">
+	<input type="label" value="description">
+	<input type="label" value="reporter">
+	 <a href="#" value= "false" onclick="check(this)">confirm</a> 
+	 <a href="#" onclick="linkClicked = true;">reject</a> 
+	 <input type="button" onclick="exportTicket(this)" value="export" name="export">
+	</div>
+
+	<div class="ticket" id="div2">
+	<input type="label" value="ID:112">
+	<input type="label" value="header">
+	<input type="label" value="description">
+	<input type="label" value="reporter">
+	<a href="#" onclick="linkClicked = true;">confirm</a> 
+	 <a href="#" onclick="linkClicked = true;">reject</a> 
+	<input type="button" onclick="exportTicket(this)" value="export" name="export">
+	</div>
+
+	<div class="ticket" id="div3">
+	<input type="label" value="ID:113">
+	<input type="label" value="header">
+	<input type="label" value="description">
+	<input type="label" value="reporter">
+	<a href="#" onclick="linkClicked = true;">confirm</a> 
+	 <a href="#" onclick="linkClicked = true;">reject</a> 
+	<input type="button" onclick="exportTicket(this)" value="export" name="export">
+	</div>
+    <input type="button" onclick="exportAllTicket(this)" value="export all">
+	</div>
+
+</body>
+</html>>
