@@ -1,6 +1,7 @@
+ var lib={};
 function core()
 {
-  var lib={};
+ 
     return Object.freeze({
       showlib:lib,
 
@@ -17,7 +18,7 @@ function core()
             console.log("key already exists");
           }
         },
-      getValue:function setter(key)
+      getValue:function (key)
         {
           return lib[key];
         }
