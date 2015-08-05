@@ -5,6 +5,8 @@
 function event()
 {
   var user=userdetail.getValue("user_details");
+  var draw=userdetail.getValue("draw");
+  console.log(draw);
 function addEvent(id,events)
 {
 	var eventName,element;
@@ -33,7 +35,7 @@ addEvent("go1",{click:function(){
               }
         );*/
 //ADD TICKET 
-addEvent("go2",{click:function(){
+/*addEvent("go2",{click:function(){
                                   ticketId = Math.floor((Math.random() * 999999) + 100000);
                                   //var user=userdetail.getValue("user_details");
                                   debugger;
@@ -48,10 +50,10 @@ addEvent("go2",{click:function(){
                                                                     exportTicket();
                                                                   }
                                                 }
-                                          );*/
+                                          );
                                 }
                               }
-        );
+        );*/
 //GET PRIVILEDGE BY ID AND DRAW TEMPLATE ACCORDINGLY
 function getPriviledgeById()
 {
@@ -63,7 +65,20 @@ function getPriviledgeById()
   for(var i=0;i<pri.length;i++)
   {
     //drawTemplate will create the templates
-    console.log(pri[i]);
+    debugger;
+    if(pri[i]==="add")
+    {
+     draw.templateAdd();
+    }
+    if(pri[i]==="show")
+    {
+     draw.ticketView();
+    }
+    if(pri[i]==="insertUser")
+    {
+     draw.templateAdd();
+    }
+
     //drawTemplate(pri[i]);
   }
 }
