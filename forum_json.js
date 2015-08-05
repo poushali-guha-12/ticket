@@ -5,6 +5,7 @@ function forum_json() {
 		users : [ { "id" : "chinmoy@fusioncharts.com", "name" : "chinmoy", "role" : "master" } ,
 				  { "id" : "kisan@fusioncharts.com", "name" : "kisan", "role" : "admin" }
 				] , 
+		//For future use and reference
 		//tickets : []
 	} ;
 
@@ -16,11 +17,10 @@ function forum_json() {
 	 }
 
 	this.setTicket = function( ticket ) {
-
+		//For future use and reference
 	 	//forum.tickets.push( ticket );
 	 	console.log(ticket);
 	 }
-
 
 	this.getUser = function ( id, requirement ) {
 		for( var i = 0 ; i < forum.users.length ; i++ ) {
@@ -41,7 +41,7 @@ function forum_json() {
 	        }
 		}
 	}	
-
+	//For future use and reference
 	/*this.getTicket = function( id ) {
         for( var i = 0; i<forum.tickets.length; i++ ) {
 	        if( forum.tickets[i].id == id ) {
