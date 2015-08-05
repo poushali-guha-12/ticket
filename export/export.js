@@ -1,4 +1,3 @@
-
 function exportTicket(element){
 	var textArray=[];
 	var parent=element.parentNode;
@@ -26,11 +25,12 @@ function exportTicket(element){
 function exportAllTicket(element){
 	var children=document.getElementsByName("export");
 	alert(children.length);
-	for(i=0;i<children.length;i++){
+	for(j=0;j<children.length;j++){
 		alert("poushali");
-		(function() {
-            exportTicket(children[i]);
-        })();
+		// (function() {
+  //           exportTicket(children[i]);
+  //       })();
+exportTicket(children[j]);
 
 	}
 	
