@@ -1,4 +1,4 @@
-(function Forum(){
+function Forum(){
     var i=0, j=0;
     function createElement(tagName, parentElement, attList, style, events, label) {
         var element = document.createElement(tagName);
@@ -32,7 +32,7 @@
               };
     })();
 
-    (this.addUser=function() {
+    this.addUser=function() {
         if(document.getElementById('addUserDiv')==null){
             createElement('div', maindiv, {id:"addUserDiv"}, {position:"relative", height:"15%", width:"100%", borderBottom:'2px solid black'}, null, "");
             createElement('input', addUserDiv, {id:'name', placeholder:'Name'}, {position:"absolute", left:"5%", top:"30%", height:'30%',width:'20%'}, null, "");
@@ -49,8 +49,8 @@
                 "role":"role",
                 "add_user":"add"
                };
-    })();
-    (this.showTicket=function (id, header, name, description) {   
+    }
+    this.showTicket=function (id, header, name, description) {   
         var tick=createElement('div', viewDiv, {id:'ticketDiv'+i}, {position:'relative', height:'30%', width:'100%', border:'1px solid red'}, null, "");
         var head=createElement('div', tick, {id:'divHeader'}, {position:'absolute', top:'6%', height:'50%', width:'100%'}, null, "");
         createElement('input', head, {id:'ticket'+j, value:id}, {position:'absolute', left:"2%", top:"5%", height:'30%', width:'20%'}, null, "");
@@ -65,7 +65,7 @@
         createElement('button', tick, {id:'export1'+j}, {position:'absolute', right:'2%', top:'42%', height:'12%', width:'10%', cursor: "pointer", backgroundColor:"white"},{click:function(){exportTicket(this)}}, "Export");
         i++;
 
-        document.getElementById('arrow').addEventListener("click",function() {
+        document.getElementById('toggle'+j).addEventListener("click",function() {
             console.log("ok");
             if(document.getElementById('divDescription').style.display = 'none')
                 document.getElementById('divDescription').style.display = '';
@@ -87,14 +87,14 @@
                 "textarea":'textarea'+j,
                 "export_single":'export1'+j
                };
-    })();
+    }
     function deleteTicket(element){
         var p1=element.parentNode;
         var p2=p1.parentNode;
         p2.removeChild(p1);
     }
 
-    (this.createTicket=function() {
+    this.createTicket=function() {
         createElement("div", maindiv, {id:"insertionDiv"}, {position:"relative", height:"30%", width:"100%", display:"block", border:'1px solid red'},null,  "");
         createElement("h4", insertionDiv, {id:"thread"}, {position:"absolute", width:"100%", textAlign:"center"}, null, "Insert A Thread");
         createElement("input", insertionDiv, {id:"threadHeader", placeholder:"Header"}, {position:"absolute", left:"2%", top:"30%", height:"15%", width:"30%"},null,  "");
@@ -104,9 +104,9 @@
         return {
                 "insert_header":"threadHeader",
                 "insert_description":"description",
-                "insert_button":"go2"
+                "insert_button":"go2",
                 "export_all":"export2"
                };
-    })();
-})();
+    }
+}
 //userdetail.register("draw",new Forum());
