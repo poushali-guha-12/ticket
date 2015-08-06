@@ -30,16 +30,24 @@ createElement("div", document.body, {id:"maindiv"}, { boxShadow:"0px 0px 50px #8
 })();
 
 this.templateAdd=function() {
+    if(document.getElementById('div2')==null){
+
+
     createElement('div', maindiv, {id:"div2"}, {position:"relative", height:"15%", width:"100%", borderBottom:'2px solid black'}, null, "");
     createElement('input', div2, {id:'name', placeholder:'Name'}, {position:"absolute", left:"5%", top:"30%", height:'30%',width:'20%'}, null, "");
     createElement('input', div2, {id:'id', placeholder:'ID'}, {position:"absolute", left:"30%", top:"30%", height:'30%', width:'20%'},null, "");
     createElement('input', div2, {id:'role', placeholder:'ROLE'}, {position:"absolute", left:"55%", top:"30%", height:'30%',width:'20%'}, null, "");
     createElement('button', div2, {id:'add'}, {position:"absolute", left:"80%", top:"30%", height:'30%',width:'10%', cursor: "pointer", backgroundColor:"white"}, null, "ADD");
+    
+}
+
+if(document.getElementById('div3')==null){
     createElement('div', maindiv, {id:'div3'}, {position:'relative', width:'100%', display:"block"}, null, "");
 
 }
+}
 
-this.ticketView=function (id, header, name, description) { debugger;  
+this.ticketView=function (id, header, name, description) {   
     var tick=createElement('div', div3, {id:'ticketDiv'+i}, {position:'relative', height:'30%', width:'100%', border:'1px solid red'}, null, "");
     var head=createElement('div', tick, {id:'divHeader'}, {position:'absolute', top:'6%', height:'50%', width:'100%'}, null, "");
     createElement('input', head, {id:'id1', value:id}, {position:'absolute', left:"2%", top:"5%", height:'30%', width:'20%'}, null, "");
@@ -51,7 +59,7 @@ this.ticketView=function (id, header, name, description) { debugger;
     createElement('button', head, {id:'arrow'}, {position:"absolute", left:"48%", bottom:"0%", height:'15%',width:'3%', cursor: "pointer"}, null, "-");
     var desc=createElement('div', tick, {id:'divDescription'}, {position:'absolute', bottom:'10%', height:'40%', width:'100%', display:"none"}, null, "");
     createElement('textarea', desc, {id:'textarea', value:description}, {position:'absolute', top:"10%", height:'80%', width:'80%', margin:'2%'}, null, "");
-    createElement('button', tick, {id:'export1'}, {position:'absolute', right:'2%', top:'42%', height:'12%', width:'10%', cursor: "pointer", backgroundColor:"white"}, null, "Export");
+    createElement('button', tick, {id:'export1'}, {position:'absolute', right:'2%', top:'42%', height:'12%', width:'10%', cursor: "pointer", backgroundColor:"white"},{click:function(){exportTicket(this)}}, "Export");
     i++;
 
     document.getElementById('arrow').addEventListener("click",function() {

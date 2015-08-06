@@ -6,7 +6,7 @@ function event() {
     var user = userdetail.getValue("user_details");
     var draw = userdetail.getValue("draw");
     var userjson = userdetail.getValue("forum_json");
-
+   
     var role;
 
     function addEvent(id, events) {
@@ -42,7 +42,7 @@ function event() {
 
         }
     });
-    debugger;
+    
    
     //GET PRIVILEDGE BY ID AND DRAW TEMPLATE ACCORDINGLY
     function getPriviledgeById() {
@@ -53,19 +53,17 @@ function event() {
 
         for (var i = 0; i < pri.length; i++) {
             //drawTemplate will create the templates
-                debugger;
+                
             if (pri[i] === "add") {
              
-                if(document.getElementById('div2')!==null){
-                    document.getElementById('div2').remove();
-                }
+                
                 draw.templateAdd();
                 draw.insertThread();
                  addEvent("go2",{click:function(){
                                    
                                       ticketId = Math.floor((Math.random() * 999999) + 100000);
                                       //var user=userdetail.getValue("user_details");
-                                      debugger;
+                                      
                                       var name = user.getName(document.getElementById('userId').value);
 
                                       console.log(name);
@@ -76,15 +74,17 @@ function event() {
                                     }
                                   }
             );
+                 addEvent("export2",{click:function(){
+                    
+                    var exportXX=exportadd.getValue("exportAllTicket");
+                    exportXX();
+                 }});
             }
             // if (pri[i] === "show") {
                
             //     draw.ticketView();
             // }
             if (pri[i] === "insertUser") {
-                 if(document.getElementById('div2')!==null){
-                    document.getElementById('div2').remove();
-                }
                 if(document.getElementById('ticketDiv0')!==null){
                     document.getElementById('ticketDiv0').remove();
                 }

@@ -5,7 +5,7 @@ function exportTicket(element) {
     for (i = 0; i < children.length; i++) {
         var childid = children[i].id;
         var childtype=children[i].type;
-        if (childid == "id" && childtype=="text") {
+        if (childid == "id1" && childtype=="number") {
             var content = children[i].value;
             textArray.push(content);
         } else {
@@ -18,8 +18,8 @@ function exportTicket(element) {
                  } 
         }
     }
-    var status=parent.style.borderColor;
-    console.log(status);
+    var status=parent.style.backgroundColor;
+    //console.log(status);
     if(status=="red"){
         var content = "confirmed";
                     textArray.push(content);
@@ -30,7 +30,7 @@ function exportTicket(element) {
             var content = "rejected";
                     textArray.push(content);
         }
-        else if(status=="black"){
+        else {
             var content = "none";
                     textArray.push(content);
 
@@ -46,6 +46,7 @@ function exportTicket(element) {
         }
 
 function exportAllTicket() {
+
     var children = document.getElementsByName("export");
     for (j = 0; j < children.length; j++) {
         exportTicket(children[j]);
