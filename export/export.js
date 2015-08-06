@@ -15,16 +15,7 @@ function exportTicket(element) {
             } else if (childid == "header" && childtype=="text") {
                     var content = children[i].value;
                     textArray.push(content);
-                 } //else {
-            //         if (childid == "confirm" && childtype=="a") {
-            //             var content = children[i].value;
-            //             textArray.push(content);
-            //         } else if (childid == "reject" && childtype=="a") {
-            //             var content = children[i].value;
-            //             textArray.push(content);
-            //         }
-            //     }
-            // }
+                 } 
         }
     }
     var status=parent.style.borderColor;
@@ -52,8 +43,10 @@ function exportTicket(element) {
 
 function exportAllTicket() {
     var children = document.getElementsByName("export");
-    //alert(children.length);
     for (j = 0; j < children.length; j++) {
         exportTicket(children[j]);
     }
 }
+var exportadd=core();
+exportadd.register("exportTicket",exportTicket);
+exportadd.register("exportAllTicket",exportAllTicket);
