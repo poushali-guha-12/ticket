@@ -36,7 +36,7 @@ function exportTicket(element) {
 
         }
     }
-
+   
     var myJsonString = JSON.stringify(textArray);
     console.log(myJsonString);
         }
