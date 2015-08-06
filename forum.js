@@ -1,5 +1,5 @@
 function Forum(){
-    var j=0;
+    var i=0, j=0;
     function createElement(tagName, parentElement, attList, style, events, label) {
         var element = document.createElement(tagName);
         var attrName, styleName, eventName;
@@ -20,7 +20,7 @@ function Forum(){
     }
     createElement("div", document.body, {id:"maindiv"}, { boxShadow:"0px 0px 50px #87CEEB" , position:"relative", margin:"auto", height:"auto", width:"60%"}, null, "");
 
-    (function login() {
+    function login() {
         createElement("div", maindiv, {id:"insertDiv"}, {position:"relative", height:"20%", width:"100%", borderBottom: "2px solid black"},null, "");
         createElement("h1", insertDiv, {id:"heading"}, {position:"absolute", width:"100%", textAlign:"center"}, null, "Online Forum");
         createElement("input", insertDiv, {id:"userId", placeholder:"Please Enter Your ID"}, {position:"absolute", left:"5%", top:"60%", height:"20%", width:"50%"}, null, "");
@@ -30,14 +30,19 @@ function Forum(){
                 "login_id":"userId",
                 "go1":"go1"
               };
-    })();
+    }
 
     this.addUser=function() {
         if(document.getElementById('addUserDiv')==null){
             createElement('div', maindiv, {id:"addUserDiv"}, {position:"relative", height:"15%", width:"100%", borderBottom:'2px solid black'}, null, "");
             createElement('input', addUserDiv, {id:'name', placeholder:'Name'}, {position:"absolute", left:"5%", top:"30%", height:'30%',width:'20%'}, null, "");
             createElement('input', addUserDiv, {id:'id', placeholder:'ID'}, {position:"absolute", left:"30%", top:"30%", height:'30%', width:'20%'},null, "");
-            createElement('input', addUserDiv, {id:'role', placeholder:'ROLE'}, {position:"absolute", left:"55%", top:"30%", height:'30%',width:'20%'}, null, "");
+            createElement('select', addUserDiv, {id:'role', value:'ROLE'}, {position:"absolute", left:"55%", top:"30%", height:'30%',width:'20%'}, null, "");
+            createElement('option', role, {value:''}, {}, null,"");
+            createElement('option', role, {id:'roleAdmin', value:'Admin'}, {}, null,"Admin");
+            createElement('option', role, {id:'roleMaster', value:'Master'}, {}, null,"Master");
+            createElement('option', role, {id:'roleReporter', value:'Reporter'}, {}, null,"Reporter");
+            createElement('option', role, {id:'roleAssignee', value:'Assignee'}, {}, null,"Assignee");
             createElement('button', addUserDiv, {id:'add'}, {position:"absolute", left:"80%", top:"30%", height:'30%',width:'10%', cursor: "pointer", backgroundColor:"white"}, null, "ADD");
         }
         if(document.getElementById('viewDiv')==null){
@@ -47,7 +52,11 @@ function Forum(){
                 "name":"name",
                 "login_id":"id",
                 "role":"role",
-                "add_user":"add"
+                "add_user":"add",
+                "roleAdmin":"roleAdmin",
+                "roleMaster":"roleMaster",
+                "roleReporter":"roleReporter",
+                "roleAssignee":"roleAssignee"
                };
     }
     this.showTicket=function (id, header, name, description) {   
