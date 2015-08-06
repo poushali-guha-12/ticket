@@ -20,7 +20,7 @@ addEvent("go1",{click:function(){
         );
 //ADD USER 
 addEvent("add",{click:function(){
-                                  setUser(document.getElementById(newName).value,document.getElementById(newId).value,document.getElementById(newRole).value);
+                                  setUser(document.getElementById(name).value,document.getElementById(id).value,document.getElementById(role).value);
                                 }
                 }
         );
@@ -39,7 +39,7 @@ addEvent("go2",{click:function(){
                                   exportId = addTicket(ticketId,name,header,description);
                                   //EXPORT SINGLE TICKET 
                                   addEvent("exportId",{click:function(){
-                                                                    exportTicket();
+                                                                    exportTicket(this);
                                                                   }
                                                 }
                                           );
