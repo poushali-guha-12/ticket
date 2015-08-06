@@ -7,10 +7,11 @@ function forum_json() {
 				] ,
 		tickets : []
 	} ;
-this.forum=function()
-{
-	return forum;
-}
+	
+	this.forum = function() {
+
+		return forum;
+	}
 
 	this.setUser = function ( id, name, role ) {
 	   
