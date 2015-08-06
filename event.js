@@ -39,35 +39,11 @@ function event() {
 
                 );
             }
+
         }
     });
-
-    //EXPORT ALL TICKET 
-    /*addEvent("exportAll",{click:function(){
-                                      exportAllTicket();
-                                    }
-                  }
-            );*/
-    //ADD TICKET 
-    /*addEvent("go2",{click:function(){
-                                      ticketId = Math.floor((Math.random() * 999999) + 100000);
-                                      //var user=userdetail.getValue("user_details");
-                                      debugger;
-                                      var name = user.getName(document.getElementById('userId').value);
-
-                                      console.log(name);
-                                      //addTicket will return the specific EXPORT button ID
-                                      //exportId = 
-                                      //addTicket(ticketId,name,header,description,exportId);
-                                      //EXPORT SINGLE TICKET 
-                                      /*addEvent("exportId",{click:function(){
-                                                                        exportTicket();
-                                                                      }
-                                                    }
-                                              );
-                                    }
-                                  }
-            );*/
+    debugger;
+   
     //GET PRIVILEDGE BY ID AND DRAW TEMPLATE ACCORDINGLY
     function getPriviledgeById() {
         var pri = [];
@@ -77,14 +53,44 @@ function event() {
 
         for (var i = 0; i < pri.length; i++) {
             //drawTemplate will create the templates
-
+                debugger;
             if (pri[i] === "add") {
+             
+                if(document.getElementById('div2')!==null){
+                    document.getElementById('div2').remove();
+                }
                 draw.templateAdd();
+                draw.insertThread();
+                 addEvent("go2",{click:function(){
+                                   
+                                      ticketId = Math.floor((Math.random() * 999999) + 100000);
+                                      //var user=userdetail.getValue("user_details");
+                                      debugger;
+                                      var name = user.getName(document.getElementById('userId').value);
+
+                                      console.log(name);
+                                       
+                                      draw.ticketView(ticketId,name,document.getElementById('threadHeader').value,document.getElementById('description').value);
+                                    document.getElementById('threadHeader').value='';
+                                     document.getElementById('description').value='';
+                                    }
+                                  }
+            );
             }
-            if (pri[i] === "show") {
-                draw.ticketView();
-            }
+            // if (pri[i] === "show") {
+               
+            //     draw.ticketView();
+            // }
             if (pri[i] === "insertUser") {
+                 if(document.getElementById('div2')!==null){
+                    document.getElementById('div2').remove();
+                }
+                if(document.getElementById('ticketDiv0')!==null){
+                    document.getElementById('ticketDiv0').remove();
+                }
+                if(document.getElementById('div4')!==null){
+                    document.getElementById('div4').remove();
+                }
                 draw.templateAdd();
             }
             if (pri[i] === "Id not Matching!!!") {
