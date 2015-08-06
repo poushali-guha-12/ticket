@@ -1,6 +1,9 @@
-function createElement(tagName, parentElement, attList, style, label) {
-    var element = document.createElement(tagName), attrName, styleName, eventName;
-    parentElement.appendChild(element);
+(function forum(){
+    var i=0;
+
+function createElement(tagName, parentElement, attList, style, events, label) {
+    var element = document.createElement(tagName);
+    var attrName, styleName, eventName;
     for (attrName in attList) {
         element[attrName] = attList[attrName];
     }
@@ -10,82 +13,118 @@ function createElement(tagName, parentElement, attList, style, label) {
     if (label != null) {
         element.appendChild(document.createTextNode(label));
     }
-    
+    for (eventName in events) {
+            element.addEventListener(eventName, events[eventName]);
+        }
+    parentElement.appendChild(element);
     return element;
 }
-createElement("div", document.body, {id:"maindiv"}, {boxShadow: "0px 0px 50px #87CEEB",position:"relative", margin:"auto", height:"100%", width:"60%", border: "3px solid black"}, "");
+createElement("div", document.body, {id:"maindiv"}, { boxShadow:"0px 0px 50px #87CEEB" , position:"relative", margin:"auto", height:"auto", width:"60%"}, null, "");
 
-(function insertId() {
-    createElement("div", maindiv, {id:"div1"}, {position:"absolute", height:"20%", width:"100%", borderBottom: "2px solid black"}, "");
-    createElement("h1", div1, {id:"heading"}, {position:"absolute", width:"100%", textAlign:"center"}, "Online Forum");
-    createElement("input", div1, {id:"userId", placeholder:"Please Enter Your ID"}, {position:"absolute", left:"5%", top:"60%", height:"20%", width:"50%"}, "");
-    createElement("button", div1, {id:"go1"}, {position:"absolute", right:"30%", top:"60%", height:"20%", width:"10%", cursor: "pointer"}, "GO");
-    createElement("span", div1, {id:"span"}, {position:"absolute", right:"10%", top:"60%", height:"20%", width:"20%", color:"red" }, "* Invalid Id");
-})();
+function insertId() {
+    createElement("div", maindiv, {id:"div1"}, {position:"relative", height:"20%", width:"100%", borderBottom: "2px solid black"},null, "");
+    createElement("h1", div1, {id:"heading"}, {position:"absolute", width:"100%", textAlign:"center"}, null, "Online Forum");
+    createElement("input", div1, {id:"userId", placeholder:"Please Enter Your ID"}, {position:"absolute", left:"5%", top:"60%", height:"20%", width:"50%"}, null, "");
+    createElement("button", div1, {id:"go1"}, {position:"absolute", right:"30%", top:"60%", height:"20%", width:"10%", cursor: "pointer", backgroundColor:"white"}, null, "GO");
+    createElement("span", div1, {id:"span"}, {position:"absolute", right:"10%", top:"60%", height:"20%", width:"20%", color:"red" }, null, "* Invalid Id");
+}
+insertId();
 
-(function templateAdd() {
-    createElement('div', maindiv, {id:"div2"}, {position:"absolute", top:"20%", height:"15%", width:"100%", borderBottom:'2px solid black'}, "");
-    createElement('input', div2, {id:'name', placeholder:'Name'}, {position:"absolute", left:"5%", top:"30%", height:'30%',width:'20%'}, "");
-    createElement('input', div2, {id:'id', placeholder:'ID'}, {position:"absolute", left:"30%", top:"30%", height:'30%', width:'20%'},"");
-    createElement('input', div2, {id:'role', placeholder:'ROLE'}, {position:"absolute", left:"55%", top:"30%", height:'30%',width:'20%'}, "");
-    createElement('button', div2, {id:'add'}, {position:"absolute", left:"80%", top:"30%", height:'30%',width:'10%', cursor: "pointer"}, "ADD");
-})();
+function templateAdd() {
+    createElement('div', maindiv, {id:"div2"}, {position:"relative", height:"15%", width:"100%", borderBottom:'2px solid black'}, null, "");
+    createElement('input', div2, {id:'name', placeholder:'Name'}, {position:"absolute", left:"5%", top:"30%", height:'30%',width:'20%'}, null, "");
+    createElement('input', div2, {id:'id', placeholder:'ID'}, {position:"absolute", left:"30%", top:"30%", height:'30%', width:'20%'},null, "");
+    createElement('input', div2, {id:'role', placeholder:'ROLE'}, {position:"absolute", left:"55%", top:"30%", height:'30%',width:'20%'}, null, "");
+    createElement('button', div2, {id:'add'}, {position:"absolute", left:"80%", top:"30%", height:'30%',width:'10%', cursor: "pointer", backgroundColor:"white"}, null, "ADD");
+}
+templateAdd();
 
-(function ticketView() {
-  var a=createElement('div', maindiv, {id:'div3'}, {position:'absolute', top:"35%", height:'30%', width:'100%', borderBottom:'2px solid black'}, "");
-    createElement('div', div3, {id:'divHeader'}, {position:'absolute', top:'6%', height:'30%', width:'100%', borderBottom:'1px solid blue'}, "");
-    createElement('input', divHeader, {id:'id1', placeholder:'id'}, {position:'absolute', left:"2%", top:"10%", height:'40%', width:'20%'}, "");
-    createElement('input', divHeader, {id:'header', placeholder:'header'}, {position:'absolute', left:"27%", top:"10%", height:'40%', width:'20%'}, "");
-    createElement('input', divHeader, {id:'ticketName', placeholder:'Name'}, {position:'absolute', right:"10%", top:"10%", height:'40%', width:'20%'}, "");
-    createElement('button', divHeader, {id:'cancel'}, {position:'absolute', right:"4%", top:"10%", height:'40%', width:'4%', cursor: "pointer"}, "X");
-    createElement('a', divHeader, {id:'confirm', value:"true"}, {position:'absolute', right:"11%", bottom:"10%", cursor:'pointer'}, "confirm");
-    createElement('a', divHeader, {id:"reject", value:"false"}, {position:'absolute', right:"5%", bottom:"10%", cursor:'pointer'}, "/ reject");
-    createElement('button', divHeader, {id:'arrow'}, {position:"absolute", left:"45%", bottom:"0%", height:'30%',width:'5%', cursor: "pointer"}, "-");
+createElement('div', maindiv, {id:'div3'}, {position:'relative', width:'100%', display:"block"}, null, "");
 
-    createElement('span', div3, {id:'divDescription'}, {position:'absolute', bottom:'10%', height:'50%', width:'100%',display:'none'}, "");
-    createElement('textarea', divDescription, {id:'textarea', placeholder:'Description'}, {position:'absolute', height:'70%', width:'80%', margin:'2%'}, "");
+function ticketView(id, header, name, description) {   
+    var tick=createElement('div', div3, {id:'ticketDiv'+i}, {position:'relative', height:'30%', width:'100%', border:'1px solid red'}, null, "");
+    var head=createElement('div', tick, {id:'divHeader'+i}, {position:'absolute', top:'6%', height:'50%', width:'100%'}, null, "");
+    createElement('input', head, {id:'id1'+i, value:id}, {position:'absolute', left:"2%", top:"5%", height:'30%', width:'20%'}, null, "");
+    createElement('input', head, {id:'header'+i, value:header}, {position:'absolute', left:"27%", top:"5%", height:'30%', width:'30%'}, null, "");
+    createElement('input', head, {id:'ticketName'+i, value:name}, {position:'absolute', right:"7%", top:"5%", height:'30%', width:'20%'}, null, "");
+
+    createElement('button', tick, {id:'cancel'+i}, {position:'absolute', right:"2%", top:"10%", height:'10%', width:'3%', cursor: "pointer", backgroundColor:"white"},{click:function(){deleteTicket(this)}},  "X"); 
+    createElement('a', tick, {id:'confirm'+i}, {position:'absolute', right:"8%", bottom:"62%", cursor:'pointer'}, { click:(function(){var k=i;return function(){colourRed(k);}})()}, "confirm");
+    createElement('a', tick, {id:"reject"+i}, {position:'absolute', right:"2%", bottom:"62%", cursor:'pointer'}, { click:(function(){var k=i;return function(){colourGreen(k);}})()}, "/ reject");
     
-    createElement('button', div3, {id:'export1'}, {position:'absolute', right:'5%', bottom:'2%', height:'15%', width:'10%', cursor: "pointer"}, "Export");
+    debugger;
+    createElement('button', head, {id:'arrow'+i}, {position:"absolute", left:"48%", bottom:"0%", height:'15%',width:'3%', cursor: "pointer"},{ click:(function(){var k=i;return function(){showdes(k);}})()}, "^");
    
-     
-    document.getElementById('arrow').addEventListener("click",function(){
-        console.log("ok");
-                  if(document.getElementById('divDescription').style.display = 'none')
-                  document.getElementById('divDescription').style.display = '';
-   //a=new set();
+    var desc=createElement('div', tick, {id:'divDescription'+i}, {position:'absolute', bottom:'10%', height:'40%', width:'100%', display:"none"}, null, "");
+    createElement('textarea', desc, {id:'textarea'+i, value:description}, {position:'absolute', top:"10%", height:'80%', width:'80%', margin:'2%'}, null, "");
+    createElement('button', tick, {id:'export1'+i}, {position:'absolute', right:'2%', top:'42%', height:'12%', width:'10%', cursor: "pointer", backgroundColor:"white"}, null, "Export");
+    i++;
 
-    });
-    document.getElementById('confirm').addEventListener("click",function(){
+   // document.getElementById('arrow').addEventListener("click",function() {
+        console.log(i);
+      //  if(document.getElementById('divDescription').style.display = 'none')
+          //  document.getElementById('divDescription').style.display = '';
+  //  });
+ /*   document.getElementById('confirm').addEventListener("click",function(){
         console.log("ok1");
-                 //if(document.getElementById('divDescription').style.display = 'none')
-                  document.getElementById('divHeader').style.background = "red";
-   //a=new set();
-
+        document.getElementById('divHeader').style.background = "red";
     });
     document.getElementById('reject').addEventListener("click",function(){
         console.log("ok2");
-                  //if(document.getElementById('divDescription').style.display = 'none')
-                  document.getElementById('divHeader').style.background = 'green';
-   //a=new set();
-
-    });
-})();
-
-(function insertThread() {
-    createElement("div", maindiv, {id:"div4"}, {position:"absolute", bottom:"1%", height:"30%", width:"100%", borderBottom: "2px solid black"}, "");
-    createElement("h4", div4, {id:"thread"}, {position:"absolute", width:"100%", textAlign:"center"}, "Insert A Thread");
-    createElement("input", div4, {id:"threadHeader", placeholder:"Header"}, {position:"absolute", left:"2%", top:"30%", height:"15%", width:"30%"}, "");
-    createElement("textarea", div4, {id:"description", placeholder:"Description"}, {position:"absolute", left:"2%", top:"50%", height:"35%", width:"70%"}, "");
-    createElement("button", div4, {id:"go2"}, {position:"absolute", left:"75%", top:"65%", height:"20%", width:"5%", cursor: "pointer"}, "GO");
-    createElement("button", div4, {id:"export2"}, {position:"absolute", right:"2%", bottom:"2%", height:"15%", width:"10%", cursor: "pointer"}, "Export");
-})();
-
-
-function set()
+        document.getElementById('divHeader').style.background = 'green';
+    });*/
+}
+function deleteTicket(element){
+    var p1=element.parentNode;
+    var p2=p1.parentNode;
+    p2.removeChild(p1);
+}
+function showdes(i)
 {
-    debugger;
-    this.style.color="red";
+    console.log(i);
+       if(document.getElementById('divDescription'+i).style.display =='none')
+            document.getElementById('divDescription'+i).style.display = 'block';
+    else
+        document.getElementById('divDescription'+i).style.display = 'none';
+
+}
+
+function colourRed(i)
+{
+   if(document.getElementById('confirm'+i))
+    document.getElementById('divHeader'+i).style.background = "red";
+
+}
+
+function colourGreen(i)
+{
+   if(document.getElementById('reject'+i))
+    document.getElementById('divHeader'+i).style.background = "green";
+
 }
 
 
-console.log("k");
+
+
+
+ticketView();
+console.log(i);
+ticketView();
+console.log(i);
+ticketView();
+console.log(i);
+ticketView();
+console.log(i);
+
+function insertThread() {
+    createElement("div", maindiv, {id:"div4"}, {position:"relative", height:"30%", width:"100%", display:"block", border:'1px solid red'},null,  "");
+    createElement("h4", div4, {id:"thread"}, {position:"absolute", width:"100%", textAlign:"center"}, null, "Insert A Thread");
+    createElement("input", div4, {id:"threadHeader", placeholder:"Header"}, {position:"absolute", left:"2%", top:"30%", height:"15%", width:"30%"},null,  "");
+    createElement("textarea", div4, {id:"description", placeholder:"Description"}, {position:"absolute", left:"2%", top:"50%", height:"35%", width:"70%"},null,  "");
+    createElement("button", div4, {id:"go2"}, {position:"absolute", left:"75%", top:"65%", height:"20%", width:"5%", cursor: "pointer", backgroundColor:"white"},null,  "GO");
+    createElement("button", div4, {id:"export2"}, {position:"absolute", right:"2%", bottom:"2%", height:"15%", width:"10%", cursor: "pointer", backgroundColor:"white"}, null, "Export");
+}
+insertThread();
+
+//console.log(i);
+})();
