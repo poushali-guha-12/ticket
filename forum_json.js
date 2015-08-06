@@ -7,12 +7,17 @@ function forum_json() {
 				] ,
 		tickets : []
 	} ;
-
+this.forum=function()
+{
+	return forum;
+}
 
 	this.setUser = function ( id, name, role ) {
 	   
 	   var user = { "id" : id , "name" : name, "role" : role };
 	   forum.users.push( user ) ;
+	   
+	   return "Success...";
 	 }
 
 	this.setTicket = function( id, header, desc, status, name ) {
@@ -23,9 +28,9 @@ function forum_json() {
 
 
 	this.getUser = function ( id, requirement ) {
-		debugger;
+		
 		for( var i = 0 ; i < forum.users.length ; i++ ) {
-			console.log(forum.users[1]);
+			
 	        if( forum.users[i].id == id ) {
 	          	if( requirement === "name" ){
 	          		return forum.users[i].name;
@@ -69,4 +74,3 @@ function forum_json() {
 	}
 }
 userdetail.register("forum_json",new forum_json());
-
