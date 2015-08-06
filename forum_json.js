@@ -17,7 +17,7 @@ this.forum=function()
 	   var user = { "id" : id , "name" : name, "role" : role };
 	   forum.users.push( user ) ;
 	   
-	   return "Success...";
+	   return "Success!!";
 	 }
 
 	this.setTicket = function( id, header, desc, status, name ) {
