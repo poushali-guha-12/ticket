@@ -8,3 +8,12 @@
 	height:10%;
 	border:1px solid black;
 }
+#div1{
+	border-color: red;
+}
+#div2{
+	border-color: black;
+}
+#div3{
+	border-color: green;
+}
