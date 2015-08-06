@@ -1,5 +1,5 @@
 function Forum(){
-    var i=0, j=0;
+    var j=0;
     function createElement(tagName, parentElement, attList, style, events, label) {
         var element = document.createElement(tagName);
         var attrName, styleName, eventName;
@@ -51,33 +51,19 @@ function Forum(){
                };
     }
     this.showTicket=function (id, header, name, description) {   
-        var tick=createElement('div', viewDiv, {id:'ticketDiv'+i}, {position:'relative', height:'30%', width:'100%', border:'1px solid red'}, null, "");
-        var head=createElement('div', tick, {id:'divHeader'}, {position:'absolute', top:'6%', height:'50%', width:'100%'}, null, "");
+        var tick=createElement('div', viewDiv, {id:'ticketDiv'+j}, {position:'relative', height:'30%', width:'100%', border:'1px solid red'}, null, "");
+        var head=createElement('div', tick, {id:'divHeader'+j}, {position:'absolute', top:'6%', height:'50%', width:'100%'}, null, "");
         createElement('input', head, {id:'ticket'+j, value:id}, {position:'absolute', left:"2%", top:"5%", height:'30%', width:'20%'}, null, "");
         createElement('input', head, {id:'header'+j, value:header}, {position:'absolute', left:"27%", top:"5%", height:'30%', width:'30%'}, null, "");
         createElement('input', head, {id:'user'+j, value:name}, {position:'absolute', right:"7%", top:"5%", height:'30%', width:'20%'}, null, "");
         createElement('button', tick, {id:'cancel'+j}, {position:'absolute', right:"2%", top:"10%", height:'10%', width:'3%', cursor: "pointer", backgroundColor:"white"},{click:function(){deleteTicket(this)}},  "X"); 
-        createElement('a', tick, {id:'confirm'}, {position:'absolute', right:"8%", bottom:"62%", cursor:'pointer'}, null, "confirm");
-        createElement('a', tick, {id:"reject"}, {position:'absolute', right:"2%", bottom:"62%", cursor:'pointer'}, null, "/ reject");
-        createElement('button', head, {id:'toggle'+j}, {position:"absolute", left:"48%", bottom:"0%", height:'15%',width:'3%', cursor: "pointer"}, null, "-");
-        var desc=createElement('div', tick, {id:'divDescription'}, {position:'absolute', bottom:'10%', height:'40%', width:'100%', display:"none"}, null, "");
+        createElement('a', tick, {id:'confirm'+j}, {position:'absolute', right:"8%", bottom:"62%", cursor:'pointer'}, { click:(function(){var k=j;return function(){colourRed(k);}})()}, "confirm");
+        createElement('a', tick, {id:"reject"+j}, {position:'absolute', right:"2%", bottom:"62%", cursor:'pointer'}, { click:(function(){var k=j;return function(){colourGreen(k);}})()}, "/ reject");
+        createElement('button', head, {id:'toggle'+j}, {position:"absolute", left:"48%", bottom:"0%", height:'20%',width:'5%', cursor: "pointer"}, { click:(function(){var k=j;return function(){showdes(k);}})()}, "-");
+        var desc=createElement('div', tick, {id:'divDescription'+j}, {position:'absolute', bottom:'10%', height:'40%', width:'100%', display:"none"}, null, "");
         createElement('textarea', desc, {id:'textarea'+j, value:description}, {position:'absolute', top:"10%", height:'80%', width:'80%', margin:'2%'}, null, "");
         createElement('button', tick, {id:'export1'+j}, {position:'absolute', right:'2%', top:'42%', height:'12%', width:'10%', cursor: "pointer", backgroundColor:"white"},{click:function(){exportTicket(this)}}, "Export");
-        i++;
-
-        document.getElementById('toggle'+j).addEventListener("click",function() {
-            console.log("ok");
-            if(document.getElementById('divDescription').style.display = 'none')
-                document.getElementById('divDescription').style.display = '';
-        });
-        document.getElementById('confirm').addEventListener("click",function(){
-            console.log("ok1");
-            document.getElementById('divHeader').style.background = "red";
-        });
-        document.getElementById('reject').addEventListener("click",function(){
-            console.log("ok2");
-            document.getElementById('divHeader').style.background = 'green';
-        });
+        j++;
         return {
                 "ticket_id":'ticket'+j,
                 "header":'header'+j,
@@ -88,12 +74,26 @@ function Forum(){
                 "export_single":'export1'+j
                };
     }
-    function deleteTicket(element){
+    function deleteTicket(element) {
         var p1=element.parentNode;
         var p2=p1.parentNode;
         p2.removeChild(p1);
     }
-
+    function showdes(i) {
+        console.log(i);
+        if(document.getElementById('divDescription'+i).style.display =='none')
+            document.getElementById('divDescription'+i).style.display = 'block';
+        else
+            document.getElementById('divDescription'+i).style.display = 'none';
+    }
+    function colourRed(i) {
+        if(document.getElementById('confirm'+i))
+            document.getElementById('divHeader'+i).style.background = "red";
+    }
+    function colourGreen(i) {
+        if(document.getElementById('reject'+i))
+            document.getElementById('divHeader'+i).style.background = "green";
+    }
     this.createTicket=function() {
         createElement("div", maindiv, {id:"insertionDiv"}, {position:"relative", height:"30%", width:"100%", display:"block", border:'1px solid red'},null,  "");
         createElement("h4", insertionDiv, {id:"thread"}, {position:"absolute", width:"100%", textAlign:"center"}, null, "Insert A Thread");
@@ -109,4 +109,4 @@ function Forum(){
                };
     }
 }
-//userdetail.register("draw",new Forum());
+userdetail.register("draw",new Forum());
