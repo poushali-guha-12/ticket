@@ -1,11 +1,12 @@
-var userdetail=core();
+var pwd=core.getAuthetication;
+core.Access_lib("user_details");
 function User(){
 	this.getName=function (id){
-		var name=userdetail.getValue("forum_json");
+		var name=core.Access_lib("forum_json");
 		return name.getUser(id,"name");
 	}
 	this.getRole=function (id){
-		var role=userdetail.getValue("forum_json");
+		var role=core.Access_lib("forum_json");
 		return role.getUser(id,"role");
 	}
 	this.isPrivilege=function (id){
@@ -32,8 +33,8 @@ function User(){
 	}
 	this.users=function (id){
 		var user={};
-		user[id]=userdetail.getValue("forum_json");
+		user[id]=core.Access_lib("forum_json");
 		return user;
 	}
 }
-userdetail.register("user_details",new User());
+core.register(new User(),"user_details",pwd);
