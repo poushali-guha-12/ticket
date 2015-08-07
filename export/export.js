@@ -29,7 +29,7 @@ function exportTicket(element) {
         if (status == "green") {
             var content = "Staus:rejected";
             textArray.push(content);
-        } else if (status == "black") {
+        } else  {
             var content = "Staus: none";
             textArray.push(content);
 
