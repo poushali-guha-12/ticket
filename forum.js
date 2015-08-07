@@ -9,7 +9,7 @@ function Forum(){
         for (styleName in style) {
             element.style[styleName] = style[styleName];
         }
-        if (label != null) {
+        if (label !== null) {
             element.appendChild(document.createTextNode(label));
         }
         for (eventName in events) {
@@ -32,7 +32,7 @@ function Forum(){
     }
 
     this.addUser=function() {
-        if(document.getElementById('addUserDiv')==null){
+        if(document.getElementById('addUserDiv')===null){
             createElement('div', maindiv, {id:"addUserDiv"}, {position:"relative", height:"15%", width:"100%", borderBottom:'2px solid black'}, null, "");
             createElement('input', addUserDiv, {id:'name', placeholder:'Name'}, {position:"absolute", left:"5%", top:"30%", height:'30%',width:'20%'}, null, "");
             createElement('input', addUserDiv, {id:'id', placeholder:'ID'}, {position:"absolute", left:"30%", top:"30%", height:'30%', width:'20%'},null, "");
@@ -44,7 +44,7 @@ function Forum(){
             createElement('option', role, {id:'roleAssignee', value:'Assignee'}, {}, null,"Assignee");
             createElement('button', addUserDiv, {id:'add'}, {position:"absolute", left:"80%", top:"30%", height:'30%',width:'10%', cursor: "pointer", backgroundColor:"white"}, null, "ADD");
         }
-        if(document.getElementById('viewDiv')==null){
+        if(document.getElementById('viewDiv')===null){
             createElement('div', maindiv, {id:'viewDiv'}, {position:'relative', width:'100%', display:"block"}, null, "");
         }
         return {
@@ -57,20 +57,20 @@ function Forum(){
                 "roleReporter":"roleReporter",
                 "roleAssignee":"roleAssignee"
                };
-    }
+    };
     this.showTicket=function (id, header, name, description) {   
         var tick=createElement('div', viewDiv, {id:'ticketDiv'+j}, {position:'relative', height:'30%', width:'100%', border:'1px solid red'}, null, "");
         var head=createElement('div', tick, {id:'divHeader'+j}, {position:'absolute', top:'6%', height:'50%', width:'100%'}, null, "");
         createElement('input', head, {id:'ticket'+j, value:id}, {position:'absolute', left:"2%", top:"5%", height:'30%', width:'20%'}, null, "");
         createElement('input', head, {id:'header'+j, value:header}, {position:'absolute', left:"27%", top:"5%", height:'30%', width:'30%'}, null, "");
         createElement('input', head, {id:'user'+j, value:name}, {position:'absolute', right:"7%", top:"5%", height:'30%', width:'20%'}, null, "");
-        createElement('button', tick, {id:'cancel'+j}, {position:'absolute', right:"2%", top:"10%", height:'10%', width:'3%', cursor: "pointer", backgroundColor:"white"},{click:function(){deleteTicket(this)}},  "X"); 
-        createElement('a', tick, {id:'confirm'+j}, {position:'absolute', right:"8%", bottom:"62%", cursor:'pointer'}, { click:(function(){var k=j;return function(){colourRed(k);}})()}, "confirm");
-        createElement('a', tick, {id:"reject"+j}, {position:'absolute', right:"2%", bottom:"62%", cursor:'pointer'}, { click:(function(){var k=j;return function(){colourGreen(k);}})()}, "/ reject");
-        createElement('button', head, {id:'toggle'+j}, {position:"absolute", left:"48%", bottom:"0%", height:'20%',width:'5%', cursor: "pointer"}, { click:(function(){var k=j;return function(){showdes(k);}})()}, "-");
+        createElement('button', tick, {id:'cancel'+j}, {position:'absolute', right:"2%", top:"10%", height:'10%', width:'3%', cursor: "pointer", backgroundColor:"white"},{click:function(){deleteTicket(this);}},  "X"); 
+        createElement('a', tick, {id:'confirm'+j}, {position:'absolute', right:"8%", bottom:"62%", cursor:'pointer'}, { click:(function(){var k=j; return function(){colourRed(k);};})()}, "confirm");
+        createElement('a', tick, {id:"reject"+j}, {position:'absolute', right:"2%", bottom:"62%", cursor:'pointer'}, { click:(function(){var k=j;return function(){colourGreen(k);};})()}, "/ reject");
+        createElement('button', head, {id:'toggle'+j}, {position:"absolute", left:"48%", bottom:"0%", height:'20%',width:'5%', cursor: "pointer"}, { click:(function(){var k=j;return function(){showdes(k);};})()}, "-");
         var desc=createElement('div', tick, {id:'divDescription'+j}, {position:'absolute', bottom:'10%', height:'40%', width:'100%', display:"none"}, null, "");
         createElement('textarea', desc, {id:'textarea'+j, value:description}, {position:'absolute', top:"10%", height:'80%', width:'80%', margin:'2%'}, null, "");
-        createElement('button', tick, {id:'export1'+j}, {position:'absolute', right:'2%', top:'42%', height:'12%', width:'10%', cursor: "pointer", backgroundColor:"white"},{click:function(){exportTicket(this)}}, "Export");
+        createElement('button', tick, {id:'export1'+j}, {position:'absolute', right:'2%', top:'42%', height:'12%', width:'10%', cursor: "pointer", backgroundColor:"white"},{click:function(){exportTicket(this);}}, "Export");
         j++;
         return {
                 "ticket_id":'ticket'+j,
@@ -81,7 +81,7 @@ function Forum(){
                 "textarea":'textarea'+j,
                 "export_single":'export1'+j
                };
-    }
+    };
     function deleteTicket(element) {
         var p1=element.parentNode;
         var p2=p1.parentNode;
@@ -115,6 +115,6 @@ function Forum(){
                 "insert_button":"go2",
                 "export_all":"export2"
                };
-    }
+    };
 }
 userdetail.register("draw",new Forum());
