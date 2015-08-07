@@ -36,11 +36,6 @@ function exportTicket(element) {
 
         }
     }
-   // var desc=document.getElementsByTagName("textarea");
-   // for(k=0;k<desc.length;k++){
-   //  if(desc)
-   // }
-
     var myJsonString = JSON.stringify(textArray);
     console.log(myJsonString);
         }
