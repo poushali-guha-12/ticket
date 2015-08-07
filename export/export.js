@@ -19,7 +19,7 @@ function exportTicket(element) {
             }
         }
     }
-    var status = divchild[0].style.borderColor;
+    var status = divchild[0].style.backgroundColor;
     console.log(status);
     if (status == "red") {
         var content = "Staus: confirmed";
