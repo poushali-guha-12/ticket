@@ -33,12 +33,12 @@ function event() {
         }
     });
     div2 = draw.addUser();
-    document.getElementById('addUserDiv').style.display = "none";
+    document.getElementById('addUserDiv').style.display = 'none';
     addEvent(div2.add_user, {
         click: function() {
             if (document.getElementById(div2.login_id).value === '' || document.getElementById(div2.name).value === '' || document.getElementById(div2.role).value === '') {
 
-                alert("provide all detailes");
+                alert('provide all detailes');
             } else {
                 var sucmsg = userjson.setUser(document.getElementById(div2.login_id).value, document.getElementById(div2.name).value, document.getElementById(div2.role).value);
                 alert(sucmsg);
@@ -54,8 +54,8 @@ function event() {
         pri = user.isPrivilege(document.getElementById(div1.login_id).value);
         for (var i = 0; i < pri.length; i++) {
 
-            if (pri[i] === "add") {
-                if (document.getElementById('insertionDiv') == null) {
+            if (pri[i] === "add") { //add = master & reporter can add ticket
+                if (document.getElementById('insertionDiv') === null) {
                     div4 = draw.createTicket();
                     addEvent(div4.export_all, {
                         click: function() {
@@ -64,7 +64,7 @@ function event() {
                     });
                     addEvent(div4.insert_button, {
                         click: function() {
-
+                            //insertion of new ticket
                             ticketId = Math.floor((Math.random() * 999999) + 100000);
                             var name = user.getName(document.getElementById(div1.login_id).value);
                             draw.showTicket(ticketId, name, document.getElementById(div4.insert_header).value, document.getElementById(div4.insert_description).value);
@@ -74,24 +74,24 @@ function event() {
                     });
                 }
             }
-            if (pri[i] === "view") {
-                if (document.getElementById("viewDiv") != null)
+            if (pri[i] === "view") { //view = Assignee can only view ticket
+                if (document.getElementById("viewDiv") !== null)
                     document.getElementById("viewDiv").style.display = "block";
-                if (document.getElementById("insertionDiv") != null)
+                if (document.getElementById("insertionDiv") !== null)
                     document.getElementById("insertionDiv").style.display = "none";
 
-            } else if (pri[i] === "insertUser") {
+            } else if (pri[i] === "insertUser") { //insertUser = Admin can only add user
                 document.getElementById(div2.add_user).disabled = false;
                 document.getElementById("viewDiv").style.display = "none";
-                if (document.getElementById("insertionDiv") != null) {
+                if (document.getElementById("insertionDiv") !== null) {
                     document.getElementById("insertionDiv").style.display = "none";
                 }
 
             } else {
-                document.getElementById(div2.add_user).disabled = true;
+                document.getElementById(div2.add_user).disabled = true;//disable add user button if not Admin
 
                 document.getElementById("viewDiv").style.display = "block";
-                if (document.getElementById("insertionDiv") != null)
+                if (document.getElementById("insertionDiv") !== null)
                     document.getElementById("insertionDiv").style.display = "block";
             }
             if (pri[i] === "Id not Matching!!!") {
@@ -102,6 +102,5 @@ function event() {
             }
 
         }
-        return user.getRole(document.getElementById(div1.login_id).value);
     }
 }
