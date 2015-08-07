@@ -1,4 +1,5 @@
-function exportTicket(element) {
+function ticketview(){
+this.exportTicket(element) {
     var textArray = [];
     var parent = element.parentNode;
     var divchild = parent.childNodes;
@@ -6,14 +7,14 @@ function exportTicket(element) {
     for (i = 0; i < children.length; i++) {
         var childid = children[i].id;
         var childtype = children[i].type;
-        if (childid == "id" && childtype == "text") {
+        if (childid === "id" && childtype === "text") {
             var content = "ID: " + children[i].value;
             textArray.push(content);
         } else {
-            if (childid = "ticketName" && childtype == "text") {
+            if (childid === "ticketName" && childtype === "text") {
                 var content = "Reporter: " + children[i].value;
                 textArray.push(content);
-            } else if (childid == "header" && childtype == "text") {
+            } else if (childid === "header" && childtype === "text") {
                 var content = "Header: " + children[i].value;
                 textArray.push(content);
             }
@@ -21,31 +22,31 @@ function exportTicket(element) {
     }
     var status = divchild[0].style.backgroundColor;
     console.log(status);
-    if (status == "red") {
+    if (status === "red") {
         var content = "Staus: confirmed";
         textArray.push(content);
 
     } else {
-        if (status == "green") {
+        if (status === "green") {
             var content = "Staus:rejected";
             textArray.push(content);
-        } else  {
+        } else if (status === "black") {
             var content = "Staus: none";
             textArray.push(content);
 
         }
     }
     var children = divchild[1].childNodes;
-    if (children.type == "text" && children.value != "") {
-        var content = "description:" + children.valuevar content = "Staus: none";
-        textArray.push(content);;
+    if (children.type === "text" && children.value !== "") {
+        var content = "description: " + children.value;
+        
         textArray.push(content);
     }
     var myJsonString = JSON.stringify(textArray);
     console.log(myJsonString);
 }
 
-function exportAllTicket() {
+this.exportAllTicket() {
     var children = document.getElementsByName("export");
     for (j = 0; j < children.length - 1; j++) {
         exportTicket(children[j]);
@@ -54,3 +55,4 @@ function exportAllTicket() {
 var exportadd = core();
 exportadd.register("exportTicket", exportTicket);
 exportadd.register("exportAllTicket", exportAllTicket);
+}
