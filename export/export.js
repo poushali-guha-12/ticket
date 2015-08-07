@@ -1,5 +1,5 @@
-function ticketview(){
-this.exportTicket(element) {
+function ticketExport(){
+this.exportTicket=function(element) {
     var textArray = [];
     var parent = element.parentNode;
     var divchild = parent.childNodes;
@@ -46,7 +46,7 @@ this.exportTicket(element) {
     console.log(myJsonString);
 }
 
-this.exportAllTicket() {
+this.exportAllTicket=function() {
     var children = document.getElementsByName("export");
     for (j = 0; j < children.length - 1; j++) {
         exportTicket(children[j]);
